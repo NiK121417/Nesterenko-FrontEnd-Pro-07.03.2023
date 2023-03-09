@@ -4,22 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lesson 3</title>
+    <title>Lesson 2</title>
 </head>
 <body>
     <script>
-        let person = {}, 
-            name = prompt("Please write your name"),
-            lastname = prompt("Please write your lastname"),
-            age = Number(prompt("Please write your age")),
-            city = prompt("Please write your city");
-            
-            person.userName = name;
-            person.userLastname = lastname;
-            person.userAge = age;
-            person.userCity = city;
-            
-        let agreement = confirm("Do you agree to the processing of your personal data?")? console.log(`I am ${person.userName} ${person.userLastname} I am ${person.userAge} yers old and I am from ${person.userCity}`) : alert('Sorry, but the user has refused to show his details');
+        let name = prompt("Please write your name");
+    
+        alert(`Hello, ${name}! How are ?`);
     </script>
 </body>
 </html>
