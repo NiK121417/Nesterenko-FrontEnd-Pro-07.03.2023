@@ -1,106 +1,73 @@
-const array = [16,-37,54,-4,72,-56,47,4,-16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47];
-
-let sum = 0,
-    positiveCount = 0,
-    negativeCount = 0,
-    positiveArray = [],
-    negativeArray = [];
-
-for(let i = 0; i < array.length; i++) {
-  if(array[i] >= 0) {
-    positiveArray.push(array[i]);
-    positiveCount++;
-  }else{
-    negativeArray.push(array[i]);
-    negativeCount++;
+let users = [
+  {
+    "index": 0,
+    "isActive": true,
+    "balance": "$2,226.60",
+    "name": "Eugenia Sawyer",
+    "gender": "female",
+    "phone": "+1 (840) 583-3207",
+    "address": "949 John Street, Rose, Puerto Rico, 1857"
+  },
+  {
+    "index": 1,
+    "isActive": true,
+    "balance": "$2,613.77",
+    "name": "Pauline Gallegos",
+    "gender": "female",
+    "phone": "+1 (985) 593-3328",
+    "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
+  },
+  {
+    "index": 2,
+    "isActive": false,
+    "balance": "$3,976.41",
+    "name": "Middleton Chaney",
+    "gender": "male",
+    "phone": "+1 (995) 591-2478",
+    "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
+  },
+  {
+    "index": 3,
+    "isActive": true,
+    "balance": "$1,934.58",
+    "name": "Burns Poole",
+    "gender": "male",
+    "phone": "+1 (885) 559-3422",
+    "address": "730 Seba Avenue, Osage, Alabama, 6290"
+  },
+  {
+    "index": 4,
+    "isActive": true,
+    "balance": "$3,261.65",
+    "name": "Mcfadden Horne",
+    "gender": "male",
+    "phone": "+1 (942) 565-3988",
+    "address": "120 Scholes Street, Kirk, Michigan, 1018"
+  },
+  {
+    "index": 5,
+    "isActive": false,
+    "balance": "$1,790.56",
+    "name": "Suzette Lewis",
+    "gender": "female",
+    "phone": "+1 (837) 586-3283",
+    "address": "314 Dunne Place, Bawcomville, Guam, 9053"
   }
-}
+]
 
-console.log(positiveArray);
-console.log(negativeArray);
+let richUsers = users.filter(user => {
+  let balance = parseFloat(user.balance.replace(/[^\d.]/g, ''));
+  return balance > 2000;
+});
 
-for (let i = 0; i < positiveArray.length; i++) {
-  sum += positiveArray[i];  
-}
+let phoneNumbers = richUsers.map(user => user.phone);
 
-console.log("Sum: " + sum);
-console.log("Positiv: " + positiveCount);
+let totalBalance = users.reduce((acc, user) => {
+  let balance = parseFloat(user.balance.replace(/[^\d.]/g, ''));
+  return acc + balance;
+}, 0);
 
 
-// 2
-
-// first var
-let minimul = Math.min(...negativeArray);
-let minIndex = negativeArray.indexOf(minimul); 
-console.log(`minimum number is ${minimul} and his index is ${minIndex}`);
-
-// second var
-minimul = negativeArray[0];
-minIndex = 0;
-for(let i = 0; i < negativeArray.length; i++){
-  if (negativeArray[i] < minimul) {
-    minimul = negativeArray[i];
-    minIndex = i;
-  }
-}
-
-console.log(`minimum number is ${minimul} and his index is ${minIndex}`);
-
-// 3
-
-maximum = positiveArray[0];
-maxIndex = 0;
-for(let i = 0; i < positiveArray.length; i++){
-  if (positiveArray[i] > maximum) {
-    maximum = positiveArray[i];
-    maxIndex = i;
-  }
-}
-console.log(`maximum number is ${maximum} and his index is ${maxIndex}`);
-
-// 4 узнал рание 
-
-console.log(`Negative: ${negativeCount} or ${negativeArray.length}`);
-
-// 5, 6, 7, 8
-
-let ungepaart = 0,
-    paart = 0,
-    sumPaart = 0,
-    sumUngepaart = 0;
-for (let i = 0; i < positiveArray.length; i++) {
-  if (positiveArray[i] % 2) {
-    ungepaart++;
-    sumUngepaart += positiveArray[i];
-  }else{
-    paart++;
-    sumPaart += positiveArray[i];
-  }
-}
-console.log(`Непарных позитивных элементов массива: ${ungepaart}, парных позитивных ${paart}`);
-console.log(`Сумма парных позитивных элементов: ${sumPaart}, а сумма непарных позитивных элементов: ${sumUngepaart}`);
-
-// 9 использую forOf для разнобразия)))
-
-let multSum = 1;
-for (positiveItem of positiveArray) {
-  multSum *= positiveItem;
-}
-console.log(multSum);
-
-// 10
-
-let max = array[0];
-for (maxItem of array) {
-  if (maxItem > max) {
-    max = maxItem;
-  }
-}
-
-for(let i = 0; i < array.length; i++) {
-  if(array[i] !== max) {
-    array[i] = 0;
-  }
-}
-console.log(`Максимальное число в массиве это ${max}`);
-console.log(`Новый обнуленный массив: ${array}`);
+console.log(richUsers);
+console.log(phoneNumbers);
+console.log(totalBalance);
